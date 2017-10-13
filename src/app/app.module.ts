@@ -38,6 +38,10 @@ import { CheckoutComponent } from './checkout/checkout.component';
         path: 'checkout', 
         component: CheckoutComponent 
       },
+      {
+        path: 'cart', 
+        component: CartComponent 
+      },
     ])
   ],
   providers: [],
