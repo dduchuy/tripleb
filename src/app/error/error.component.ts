@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-error',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorComponent implements OnInit {
 
-  constructor() { }
+  name = 'question';
+
+  constructor(private user: UserService) { }
 
   ngOnInit() {
+    this.name = this.user.username;
+    console.log('Is user logged in? ', this.user.getUserLoggedIn());
   }
 
 }

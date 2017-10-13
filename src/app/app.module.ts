@@ -10,7 +10,8 @@ import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-
+import { UserComponent } from './user/user.component';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     LoginComponent,
     ErrorComponent,
     CartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -42,9 +44,13 @@ import { CheckoutComponent } from './checkout/checkout.component';
         path: 'cart', 
         component: CartComponent 
       },
+      {
+        path: 'error', 
+        component: ErrorComponent 
+      }
     ])
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
