@@ -18,9 +18,13 @@ export class LoginComponent implements OnInit {
     var username = e.target.elements[0].value;
     var password = e.target.elements[1].value;
 
+    // login check
     if(username == 'ddh' && password == 'ddh'){
       this.user.setUserLoggedIn();
-      this.router.navigate(['error']);
+      this.router.navigate(['userpage']);
+    }
+    else{
+      this.router.navigate(['error']); // wrong user pass
     }
   }
 }

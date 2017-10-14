@@ -12,6 +12,7 @@ import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { UserComponent } from './user/user.component';
 import { UserService } from './user.service';
+import { UserpageComponent } from './userpage/userpage.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { UserService } from './user.service';
     ErrorComponent,
     CartComponent,
     CheckoutComponent,
-    UserComponent
+    UserComponent,
+    UserpageComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +49,10 @@ import { UserService } from './user.service';
       {
         path: 'error', 
         component: ErrorComponent 
+      },
+      {
+        path: 'userpage',
+        component: UserpageComponent
       }
     ])
   ],
