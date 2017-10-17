@@ -20,7 +20,7 @@ export class LoginComponent {
   email: string;
   password: string;
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, public router: Router) {}
 
   signup() {
     this.authService.signup(this.email, this.password);
@@ -34,5 +34,6 @@ export class LoginComponent {
 
   logout() {
     this.authService.logout();
+    this.router.navigate(["/"]);  // go back to home page
   }
 }
