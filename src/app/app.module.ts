@@ -13,6 +13,24 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { UserComponent } from './user/user.component';
 import { UserService } from './user.service';
 import { UserpageComponent } from './userpage/userpage.component';
+import { SignupComponent } from './signup/signup.component';
+import { AuthService } from './auth.service';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+// Initialize Firebase
+var fireconfig = {
+  apiKey: "AIzaSyDPWwg-ojIyxNoFWGcDELpyk0cxKSsX6tA",
+  authDomain: "tribleb-d05e6.firebaseapp.com",
+  databaseURL: "https://tribleb-d05e6.firebaseio.com",
+  projectId: "tribleb-d05e6",
+  storageBucket: "tribleb-d05e6.appspot.com",
+  messagingSenderId: "484020753676"
+};
+  
+
 
 @NgModule({
   declarations: [
@@ -23,12 +41,16 @@ import { UserpageComponent } from './userpage/userpage.component';
     CartComponent,
     CheckoutComponent,
     UserComponent,
-    UserpageComponent
+    UserpageComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    AngularFireModule.initializeApp(fireconfig),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
     RouterModule.forRoot([
       {
         path: 'login', 
@@ -56,7 +78,7 @@ import { UserpageComponent } from './userpage/userpage.component';
       }
     ])
   ],
-  providers: [UserService],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

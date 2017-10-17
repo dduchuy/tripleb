@@ -1,13 +1,18 @@
-<form (submit)="loginUser($event)">
-    <div class="input">
-      <label>Username</label>
-      <input type="text">
-    </div>
-    <div class="input">
-      <label>Password</label>
-      <input type="password">
-    </div>
-    <div class="input">
-      <input type="submit" value="Login">
-    </div>
-  </form>
+<h1 *ngIf="authService.user | async">Welcome {{ (authService.user | async)?.email }}!</h1>
+
+<div *ngIf="!(authService.user | async)">
+  <input type="text" [(ngModel)]="email" placeholder="email">
+  <input type="password" [(ngModel)]="password" placeholder="password">
+
+  <button (click)="signup()" [disabled]="!email || !password">
+    Signup
+  </button>
+
+  <button (click)="login()" [disabled]="!email || !password">
+    Login
+  </button>
+</div>
+
+<button (click)="logout()" *ngIf="authService.user | async">
+  Logout
+</button>

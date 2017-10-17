@@ -1,30 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../user.service';
+
+import { AuthService } from '../auth.service';
+
+
+import { AngularFireDatabase, FirebaseListObservable, } from 'angularfire2/database-deprecated';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Observable } from 'rxjs/Observable';
+import * as firebase from 'firebase/app';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
 
-  constructor(private router:Router, private user:UserService) { }
+export class LoginComponent {
+  email: string;
+  password: string;
 
-  ngOnInit() {
+  constructor(public authService: AuthService) {}
+
+  signup() {
+    this.authService.signup(this.email, this.password);
+    this.email = this.password = '';
   }
-  
-  loginUser(e){
-    var username = e.target.elements[0].value;
-    var password = e.target.elements[1].value;
 
-    // login check
-    if(username == 'ddh' && password == 'ddh'){
-      this.user.setUserLoggedIn();
-      this.router.navigate(['userpage']);
-    }
-    else{
-      this.router.navigate(['error']); // wrong user pass
-    }
+  login() {
+    this.authService.login(this.email, this.password);
+    this.email = this.password = '';    
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }
