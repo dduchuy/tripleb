@@ -56,6 +56,7 @@ export class AuthService {
       console.log('Nice, it worked!');
     })
     .catch(err => {
+      alert('Wrong Email or Password');
       console.log('Something went wrong:',err.message);
     });
   }
