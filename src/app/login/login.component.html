@@ -11,6 +11,10 @@
   <button (click)="login()" [disabled]="!email || !password">
     Login
   </button>
+
+  <button (click)="loginWithGoogle()" >
+    Login with Google
+  </button>
 </div>
 
 <button (click)="logout()" *ngIf="authService.user | async">

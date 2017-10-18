@@ -1,5 +1,4 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { AuthService } from '../auth.service';
 
@@ -20,20 +19,23 @@ export class LoginComponent {
   email: string;
   password: string;
 
-  constructor(public authService: AuthService, public router: Router) {}
+  constructor(public authService: AuthService) {}
 
   signup() {
-    this.authService.signup(this.email, this.password);
+    this.authService.signUpWithEmail(this.email, this.password);
     this.email = this.password = '';
   }
 
   login() {
-    this.authService.login(this.email, this.password);
+    this.authService.loginWithEmail(this.email, this.password);
     this.email = this.password = '';    
+  }
+  
+  loginWithGoogle(){
+    this.authService.loginWithGoogle();
   }
 
   logout() {
-    this.authService.logout();
-    this.router.navigate(["/"]);  // go back to home page
+    this.authService.logout();  
   }
 }
