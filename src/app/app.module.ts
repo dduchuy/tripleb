@@ -11,7 +11,6 @@ import { ErrorComponent } from './error/error.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { UserComponent } from './user/user.component';
-import { UserpageComponent } from './userpage/userpage.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthService } from './auth.service';
 
@@ -40,7 +39,6 @@ var fireconfig = {
     CartComponent,
     CheckoutComponent,
     UserComponent,
-    UserpageComponent,
     SignupComponent
   ],
   imports: [
@@ -70,10 +68,6 @@ var fireconfig = {
       {
         path: 'error', 
         component: ErrorComponent 
-      },
-      {
-        path: 'userpage',
-        component: UserpageComponent
       }
     ])
   ],
