@@ -67,9 +67,10 @@ export class AuthService {
   }
 
   logout() {
+    // need to implmeneted check to see if it signs out then 
+    // go to home page
     this.firebaseAuth.auth.signOut();
     this.router.navigate(['/']);  // go back to home page
-
   }
 
 }

@@ -11,7 +11,6 @@ import { ErrorComponent } from './error/error.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { UserComponent } from './user/user.component';
-import { UserService } from './user.service';
 import { UserpageComponent } from './userpage/userpage.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthService } from './auth.service';
