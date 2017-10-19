@@ -1,0 +1,12 @@
+google mail:
+	triplebbbdev@gmail.com
+	triplebdev123
+	Male
+	Birthdate: Oct 19 1992
+
+MLab:
+	account name: triplebdev
+	email: triplebbbdev@gmail.com
+	username:triplebdev
+	password:triplebdev123
+	
