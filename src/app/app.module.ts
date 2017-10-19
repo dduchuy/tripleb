@@ -17,6 +17,7 @@ import { AuthService } from './auth.service';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { ContactComponent } from './contact/contact.component';
 
 // Initialize Firebase
 var fireconfig = {
@@ -39,7 +40,8 @@ var fireconfig = {
     CartComponent,
     CheckoutComponent,
     UserComponent,
-    SignupComponent
+    SignupComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +70,10 @@ var fireconfig = {
       {
         path: 'error', 
         component: ErrorComponent 
+      },
+      {
+        path: 'contact',
+        component: ContactComponent
       }
     ])
   ],
