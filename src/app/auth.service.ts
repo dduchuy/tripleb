@@ -44,6 +44,7 @@ export class AuthService {
         console.log('Success!', value);
       })
       .catch(err => {
+        alert('Invalid Email');
         console.log('Something went wrong:', err.message);
       })
   }
@@ -74,4 +75,14 @@ export class AuthService {
     this.router.navigate(['/']);  // go back to home page
   }
 
+  resetPassword(email: string){
+    console.log("service: " + email);
+    this.firebaseAuth.auth.sendPasswordResetEmail(email)
+    .then(()=> {
+      console.log('email sent');
+    })
+    .catch(err=> {
+      console.log(err);
+    });    
+  }
 }
