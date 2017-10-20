@@ -1,6 +1,6 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../services/auth.service';
 
 
 import { AngularFireDatabase, FirebaseListObservable, } from 'angularfire2/database-deprecated';
