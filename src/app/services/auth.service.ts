@@ -49,9 +49,9 @@ export class AuthService {
       })
   }
 
-  // register(firstname: string, lastname: string, email: string, password: string){
+  register(firstname: string, lastname: string, email: string, password: string){
     
-  // }
+  }
 
   loginWithEmail(email:string, password: string){
     this.firebaseAuth
@@ -62,7 +62,7 @@ export class AuthService {
     })
     .catch(err => {
       alert('Wrong Email or Password');
-      console.log('Something went wrong:',err.message);
+      console.log('Something went wrong:', err.message);
     });
   }
 

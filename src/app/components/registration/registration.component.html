@@ -11,7 +11,10 @@
 			<input type ="email" class="form-control" [(ngModel)]="email" placeholder="enter your email" name="email" ><br>
 
 		<label for="inputPassword">Password</label>
-			<input type="password" name="password" class="form-control" id="inputPassword" [(ngModel)]="password" placeholder="enter your password"> <br>
+			<input type="password" name="userPassword" class="form-control" id="inputPassword" [(ngModel)]="password" placeholder="enter your password"> <br>
+
+		<label for="inputPhone">Phone Number</label>
+			<input type="tel" name="userTel" class="form-control" id="inputPhone" [(ngModel)]="telphone" placeholder="enter your phone number"> <br>
 
 		<button type="submit" class="btn btn-primary" (click)="signup()">Registration</button>
 	</div>
