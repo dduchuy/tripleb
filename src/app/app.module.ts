@@ -24,6 +24,7 @@ import { ResetpwordComponent } from './components/resetpword/resetpword.componen
 // services
 import { AuthService } from './services/auth.service';
 import { GlobalService } from './services/global.service';
+import { ItemService } from './services/item.service';
 
 // Initialize Firebase
 var fireconfig = {
