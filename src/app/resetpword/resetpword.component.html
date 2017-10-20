@@ -1,0 +1,14 @@
+<div class="container" >
+  <form>
+      <div class="form-group">
+        <!-- <input type="text" [(ngModel)]="email" placeholder="email"> -->
+        <label for="inputEmail">Email Address</label>
+        <input type="email" name="email" class="form-control" id="inputEmail" [(ngModel)]="email" placeholder="email">
+      </div>
+
+      <button type="submit" class="btn btn-primary" (click)="reset(email)" [disabled]="!email">
+        Send
+      </button>
+
+  </form>
+</div>
