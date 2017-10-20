@@ -15,9 +15,9 @@
         <input type="password" name="password" class="form-control" id="inputPassword" [(ngModel)]="password" placeholder="password">
       </div>
 
-      <button type="button" class="btn btn-primary" (click)="signup()" [disabled]="!email || !password">
+      <!-- <button type="button" class="btn btn-primary" (click)="signup()" [disabled]="!email || !password">
         Signup
-      </button>
+      </button> -->
 
       <button type="submit" class="btn btn-primary" (click)="login()" [disabled]="!email || !password">
         Login
@@ -28,6 +28,7 @@
       </button>
 
       <a routerLink="/resetPassword">Forget Password?</a>
+      <a routerLink="/register">Don't have an account?</a>
     </div>
   </form>
 </div>
