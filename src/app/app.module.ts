@@ -4,21 +4,26 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
+// web component
 import { AppComponent } from './app.component';
-import { RegistrationComponent } from './registration/registration.component';
-import { LoginComponent } from './login/login.component';
-import { ErrorComponent } from './error/error.component';
-import { CartComponent } from './cart/cart.component';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { UserComponent } from './user/user.component';
-import { SignupComponent } from './signup/signup.component';
-import { AuthService } from './auth.service';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { LoginComponent } from './components/login/login.component';
+import { ErrorComponent } from './components/error/error.component';
+import { CartComponent } from './components/cart/cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { UserComponent } from './components/user/user.component';
+import { SignupComponent } from './components/signup/signup.component';
+
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { ContactComponent } from './contact/contact.component';
-import { ResetpwordComponent } from './resetpword/resetpword.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { ResetpwordComponent } from './components/resetpword/resetpword.component';
+
+// services
+import { AuthService } from './services/auth.service';
+import { GlobalService } from './services/global.service';
 
 // Initialize Firebase
 var fireconfig = {
