@@ -1,0 +1,15 @@
+<div class="container">
+	<h1 class="well">Browse</h1>
+	<div class="row">
+		<div class="col-md-3 col-sm-3" *ngFor="let item of itemList">
+			<img src="{{ item.cover }}" class="thumbnail">
+			<h4 class="title">{{ item.title }}</h4>
+			<div class="description">
+				<small>{{ item.description.substring(0, 100) }}...</small>
+			</div>
+			<div class="price">Buy it for <strong>${{ item.price }}</strong></div>
+			<br>
+			<a routerLink="item/{{item._id}}" class="btn btn-primary btn-block">View item</a>
+		</div>
+	</div>
+</div>

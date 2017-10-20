@@ -13,23 +13,23 @@ export class ItemService {
   	this.http = http;
   }
 
-  getAllitems() {
+  getAllItems() {
   	let searchUrl = "http://localhost:5000/items";
   	return this.http.get(searchUrl).map(res => res.json());
   }
 
-  getitemById(id) {
+  getItemById(id) {
     let searchUrl = "http://localhost:5000/item?itemId=" + id;
     return this.http.get(searchUrl).map(res => res.json());
   }
 
-  deleteitemById(id) {
+  deleteItemById(id) {
     let searchUrl = "http://localhost:5000/item?itemId=" + id;
     console.log(id);
     return this.http.delete(searchUrl).map(res => res.json());
   }
 
-  additem(itemData) {
+  addItem(itemData) {
     let searchUrl = "http://localhost:5000/item";
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
@@ -40,7 +40,7 @@ export class ItemService {
     return this.http.post(searchUrl, JSON.stringify({ itemData: itemData }), options).map(res => res.json());
   }
 
-  updateitem(itemData) {
+  updateItem(itemData) {
     let searchUrl = "http://localhost:5000/item";
     let headers = new Headers();
     headers.append("Content-Type", "application/json");

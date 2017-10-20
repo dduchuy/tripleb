@@ -13,7 +13,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { UserComponent } from './components/user/user.component';
 import { SignupComponent } from './components/signup/signup.component';
-
+import { HomeComponent } from './components/home/home.component';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -25,6 +25,7 @@ import { ResetpwordComponent } from './components/resetpword/resetpword.componen
 import { AuthService } from './services/auth.service';
 import { GlobalService } from './services/global.service';
 import { ItemService } from './services/item.service';
+import { ItemlistComponent } from './components/itemlist/itemlist.component';
 
 // Initialize Firebase
 var fireconfig = {
@@ -49,7 +50,9 @@ var fireconfig = {
     UserComponent,
     SignupComponent,
     ContactComponent,
-    ResetpwordComponent
+    ResetpwordComponent,
+    HomeComponent,
+    ItemlistComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +62,21 @@ var fireconfig = {
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     RouterModule.forRoot([
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'home'
+      },
+      {
+        path: 'home', 
+        component: HomeComponent,
+        children: [
+          {
+            path: '',
+            component: ItemlistComponent,
+          }
+        ]
+      },
       {
         path: 'login', 
         component: LoginComponent 
@@ -89,7 +107,7 @@ var fireconfig = {
       }
     ])
   ],
-  providers: [AuthService],
+  providers: [AuthService, GlobalService, ItemService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
