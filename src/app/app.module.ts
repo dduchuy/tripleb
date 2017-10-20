@@ -104,6 +104,10 @@ var fireconfig = {
       {
         path: 'resetPassword',
         component: ResetpwordComponent
+      },
+      {
+        path: 'register',
+        component: RegistrationComponent
       }
     ])
   ],
