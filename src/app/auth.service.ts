@@ -44,6 +44,7 @@ export class AuthService {
         console.log('Success!', value);
       })
       .catch(err => {
+        alert('Invalid Email');
         console.log('Something went wrong:', err.message);
       })
   }
