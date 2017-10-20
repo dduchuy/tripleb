@@ -12,7 +12,9 @@ export class RegistrationComponent implements OnInit {
   
   email: string;
   password: string;
-
+  firstname: string;
+  lastname: string;
+  
   constructor(public authService: AuthService) { }
 
   ngOnInit() {

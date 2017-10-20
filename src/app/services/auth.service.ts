@@ -49,6 +49,10 @@ export class AuthService {
       })
   }
 
+  // register(firstname: string, lastname: string, email: string, password: string){
+    
+  // }
+
   loginWithEmail(email:string, password: string){
     this.firebaseAuth
     .auth
@@ -71,8 +75,16 @@ export class AuthService {
   logout() {
     // need to implmeneted check to see if it signs out then 
     // go to home page
-    this.firebaseAuth.auth.signOut();
-    this.router.navigate(['/']);  // go back to home page
+    this.firebaseAuth.auth.signOut()
+    .then((value) =>{
+      alert('You have signed out');
+      this.router.navigate(['/']);
+    })
+    .catch((err) =>{
+      console.log(err);
+    });
+   // this.firebaseAuth.auth.signOut();
+   // this.router.navigate(['/']);  // go back to home page
   }
 
   resetPassword(email: string){
