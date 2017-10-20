@@ -3,10 +3,10 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.1.
 
 ## Development server
-MongoDB information is under /info folder
+MongoDB information is under /info folder\
 Navigate to the project folder and run `npm install` 
 Run `npm install` in the `backend` folder and do `node server.js` DB will run and listen under port 5000
-and run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. 
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. 
 The app will automatically reload if you change any of the source files.
 
 
