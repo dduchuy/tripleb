@@ -10,6 +10,11 @@ export class AuthService {
   
   private user: Observable<firebase.User>;
   private userDetails: firebase.User = null;
+  private userInfo = firebase.auth().currentUser;
+  private name : string;
+  private email : string;
+  private uid : string;
+  private emailVerified : string;
 
   constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
     this.user = firebaseAuth.authState;
@@ -27,6 +32,17 @@ export class AuthService {
     );
   }
   
+  userInfomation(){
+    if(this.userInfo != null){
+      this.userInfo.providerData.forEach(function (profile){
+        console.log("Sign-in provider: "+profile.providerId);
+        console.log("  Provider-specific UID: "+profile.uid);
+        console.log("  Name: "+profile.displayName);
+        console.log("  Email: "+profile.email);
+        console.log("  Photo URL: "+profile.photoURL);
+      });
+    }
+  }
   isLoggedIn(){
     if(this.userDetails == null){
       return false;
@@ -42,11 +58,15 @@ export class AuthService {
       .createUserWithEmailAndPassword(email, password)
       .then( value => {
         console.log('Success!', value);
+        firebase.database().ref('users/').set({
+        email: email,
+        passowrd: password
+        });
       })
       .catch(err => {
         alert('Invalid Email');
         console.log('Something went wrong:', err.message);
-      })
+      });
   }
 
   register(firstname: string, lastname: string, email: string, password: string){
