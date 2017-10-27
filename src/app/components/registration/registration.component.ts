@@ -22,7 +22,7 @@ export class RegistrationComponent implements OnInit {
 
   signup() {
     console.log("email: " + this.email + " password: " + this.password);
-    this.authService.signUpWithEmail(this.email, this.password);
+    this.authService.signUpWithEmail(this.email, this.password, this.firstname, this.lastname);
     this.email = this.password = '';
   }
 }

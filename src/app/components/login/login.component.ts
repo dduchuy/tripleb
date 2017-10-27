@@ -18,11 +18,12 @@ import * as firebase from 'firebase/app';
 export class LoginComponent {
   email: string;
   password: string;
-
+  firstname: string;
+  lastname: string;
   constructor(public authService: AuthService) {}
 
   signup() {
-    this.authService.signUpWithEmail(this.email, this.password);
+    this.authService.signUpWithEmail(this.email, this.password, this.firstname, this.lastname );
     this.email = this.password = '';
   }
 
@@ -39,4 +40,6 @@ export class LoginComponent {
   logout() {
     this.authService.logout();  
   }
+
+  
 }

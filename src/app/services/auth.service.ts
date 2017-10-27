@@ -52,15 +52,17 @@ export class AuthService {
     }
   }
 
-  signUpWithEmail(email: string, password: string){
+  signUpWithEmail(email: string, password: string, firstname: string, lastname: string){
     this.firebaseAuth
       .auth
       .createUserWithEmailAndPassword(email, password)
       .then( value => {
         console.log('Success!', value);
-        firebase.database().ref('users/').set({
+        firebase.database().ref('users/' + value.uid).set({
         email: email,
-        passowrd: password
+        password: password,
+        firstname: firstname,
+        lastname: lastname
         });
       })
       .catch(err => {
