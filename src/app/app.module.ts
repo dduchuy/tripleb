@@ -1,3 +1,4 @@
+import { RegisterService } from './services/register.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -12,7 +13,6 @@ import { ErrorComponent } from './components/error/error.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { UserComponent } from './components/user/user.component';
-import { SignupComponent } from './components/signup/signup.component';
 import { HomeComponent } from './components/home/home.component';
 
 import { AngularFireModule } from 'angularfire2';
@@ -48,7 +48,6 @@ var fireconfig = {
     CartComponent,
     CheckoutComponent,
     UserComponent,
-    SignupComponent,
     ContactComponent,
     ResetpwordComponent,
     HomeComponent,
@@ -111,7 +110,7 @@ var fireconfig = {
       }
     ])
   ],
-  providers: [AuthService, GlobalService, ItemService],
+  providers: [AuthService, GlobalService, ItemService, RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,4 @@
+import { RegisterService } from './../../services/register.service';
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../../services/auth.service';
@@ -15,7 +16,9 @@ export class RegistrationComponent implements OnInit {
   firstname : string;
   lastname : string;
   telphone : number;
-  constructor(public authService: AuthService) { }
+  username : string;
+
+  constructor(public registerService: RegisterService) { }
 
   ngOnInit() {
    
@@ -23,7 +26,8 @@ export class RegistrationComponent implements OnInit {
 
   signup() {
     console.log("email: " + this.email + " password: " + this.password);
-    this.authService.signUpWithEmail(this.email, this.password, this.firstname, this.lastname, this.telphone);
+    this.registerService.signUpWithEmail(this.email, this.password, 
+      this.firstname, this.lastname, this.telphone, this.username);
     this.email = this.password = '';
   }
 }
