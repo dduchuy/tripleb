@@ -11,9 +11,6 @@ export class AuthService {
   private user: Observable<firebase.User>;
   private userDetails: firebase.User = null;
   private userInfo = firebase.auth().currentUser;
-  private name : string;
-  private email : string;
-  private uid : string;
   private emailVerified : string;
 
   constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
@@ -52,7 +49,7 @@ export class AuthService {
     }
   }
 
-  signUpWithEmail(email: string, password: string, firstname: string, lastname: string){
+  signUpWithEmail(email: string, password: string, firstname: string, lastname: string, phone:number){
     this.firebaseAuth
       .auth
       .createUserWithEmailAndPassword(email, password)
@@ -62,11 +59,12 @@ export class AuthService {
         email: email,
         password: password,
         firstname: firstname,
-        lastname: lastname
+        lastname: lastname,
+        phone: phone
         });
       })
       .catch(err => {
-        alert('Invalid Email');
+        //alert('Invalid Email');
         console.log('Something went wrong:', err.message);
       });
   }

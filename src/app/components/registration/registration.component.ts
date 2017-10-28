@@ -14,7 +14,7 @@ export class RegistrationComponent implements OnInit {
   password: string;
   firstname: string;
   lastname: string;
-  
+  telphone: number;
   constructor(public authService: AuthService) { }
 
   ngOnInit() {
@@ -22,7 +22,7 @@ export class RegistrationComponent implements OnInit {
 
   signup() {
     console.log("email: " + this.email + " password: " + this.password);
-    this.authService.signUpWithEmail(this.email, this.password, this.firstname, this.lastname);
+    this.authService.signUpWithEmail(this.email, this.password, this.firstname, this.lastname, this.telphone);
     this.email = this.password = '';
   }
 }
