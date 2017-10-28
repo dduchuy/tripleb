@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginComponent } from './components/login/login.component';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,14 @@ import { LoginComponent } from './components/login/login.component';
 })
 
 export class AppComponent {
+  isUserLoggedIn : boolean;
 
-  constructor(){
+  constructor(public authservice : AuthService){
   }
+
+  ngOnInit() {
+    this.isUserLoggedIn = this.authservice.isLoggedIn();
+  }
+
   title = 'app';
 }

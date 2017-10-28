@@ -10,14 +10,15 @@ import { AuthService } from '../../services/auth.service';
 })
 export class RegistrationComponent implements OnInit {
   
-  email: string;
-  password: string;
-  firstname: string;
-  lastname: string;
-  telphone: number;
+  email : string;
+  password : string;
+  firstname : string;
+  lastname : string;
+  telphone : number;
   constructor(public authService: AuthService) { }
 
   ngOnInit() {
+   
   }
 
   signup() {

@@ -22,11 +22,6 @@ export class LoginComponent {
   lastname: string;
   constructor(public authService: AuthService) {}
 
-  // signup() {
-  //   this.authService.signUpWithEmail(this.email, this.password, this.firstname, this.lastname );
-  //   this.email = this.password = '';
-  // }
-
   login() {
     this.authService.loginWithEmail(this.email, this.password);
     this.email = this.password = '';    
