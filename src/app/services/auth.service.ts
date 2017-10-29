@@ -27,18 +27,6 @@ export class AuthService {
       }
     );
   }
-  
-  userInfomation(){
-    if(this.userInfo != null){
-      this.userInfo.providerData.forEach(function (profile){
-        console.log("Sign-in provider: "+profile.providerId);
-        console.log("  Provider-specific UID: "+profile.uid);
-        console.log("  Name: "+profile.displayName);
-        console.log("  Email: "+profile.email);
-        console.log("  Photo URL: "+profile.photoURL);
-      });
-    }
-  }
 
   isLoggedIn(){
     if(this.userDetails == null){
@@ -69,8 +57,6 @@ export class AuthService {
   }
 
   logout() {
-    // need to implmeneted check to see if it signs out then 
-    // go to home page
     this.firebaseAuth.auth.signOut()
     .then((value) =>{
       alert('You have signed out');
@@ -79,8 +65,7 @@ export class AuthService {
     .catch((err) =>{
       console.log(err);
     });
-   // this.firebaseAuth.auth.signOut();
-   // this.router.navigate(['/']);  // go back to home page
+
   }
 
   resetPassword(email: string){
