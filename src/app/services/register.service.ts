@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
@@ -7,11 +8,11 @@ import * as firebase from 'firebase/app';
 export class RegisterService {
   private userInfo = firebase.auth().currentUser;
   
-  constructor(private firebaseAuth: AngularFireAuth) {
+  constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
 
    }
 
-  signUpWithEmail(email: string, password: string, firstname: string, 
+  register(email: string, password: string, firstname: string, 
     lastname: string, phone:number, username: string){
     this.firebaseAuth
       .auth
@@ -26,6 +27,7 @@ export class RegisterService {
         phone: phone,
         username: username
         });
+        this.router.navigate(['/']);
       })
       .catch(err => {
         //alert('Invalid Email');

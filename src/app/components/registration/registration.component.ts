@@ -1,5 +1,5 @@
 import { RegisterService } from './../../services/register.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { AuthService } from '../../services/auth.service';
 
@@ -9,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent {
   
   email : string;
   password : string;
@@ -20,13 +20,9 @@ export class RegistrationComponent implements OnInit {
 
   constructor(public registerService: RegisterService) { }
 
-  ngOnInit() {
-   
-  }
-
   signup() {
     console.log("email: " + this.email + " password: " + this.password);
-    this.registerService.signUpWithEmail(this.email, this.password, 
+    this.registerService.register(this.email, this.password, 
       this.firstname, this.lastname, this.telphone, this.username);
     this.email = this.password = '';
   }
