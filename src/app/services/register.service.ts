@@ -27,6 +27,11 @@ export class RegisterService {
         phone: phone,
         username: username
         });
+        firebase.database().ref('usernames/' + value.uid).set({
+          email: email,
+          username: username,
+          uid: value.uid
+        });
         this.router.navigate(['/']);
       })
       .catch(err => {

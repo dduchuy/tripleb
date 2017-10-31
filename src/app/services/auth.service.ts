@@ -33,20 +33,24 @@ export class AuthService {
     return re.test(email);
   }
 
-  getEmailByUsername(username: string): string {
+  getEmailByUsername(username: string, password: string) : string{
     console.log("calling getUsername: " + username);
-    var ref = firebase.database().ref("users/");
+    var ref = firebase.database().ref("usernames/");
     let retEmail: string = "";
-    ref.orderByChild("username").on("child_added", function (data) {
-      var v = data.val();
-      if (v.username === username) {
-        console.log("v: " + v.email);
-        retEmail = v.email;
-      }
-      else {
-        console.log("username doesn't match!");
-        return "";
-      }
+    ref.once('value').then(function (snapshot) {
+      snapshot.forEach(function (userSnapshot) {
+        var username2 = userSnapshot.val();
+        if (username2.username === username) {
+          console.log("email: " + username2.email);
+          retEmail = username2.email;
+          console.log("retEmail: " + retEmail + " password: " + password);
+        }
+      })
+    }).then(value=>{
+        console.log("value2: " + value);
+        console.log("retEmail2: " + retEmail + " password: " + password);
+        return retEmail;
+      
     });
     return retEmail;
   }
@@ -63,9 +67,25 @@ export class AuthService {
   loginWithEmail(email: string, password: string) {
     console.log("before: " + email);
     if (!this.isEmail(email)) {
-      email = this.getEmailByUsername(email);
+      email = this.getEmailByUsername(email, password);
       console.log("after: " + email);
     }
+    
+    console.log("it should be here: " + email + " p: " + password);
+    this.firebaseAuth
+      .auth
+      .signInWithEmailAndPassword(email, password)
+      .then(value => {
+        console.log('Nice, it worked!');
+      })
+      .catch(err => {
+        alert('Wrong Email or Password');
+        console.log('Something went wrong:', err.message);
+      });
+
+  }
+
+  login(email: string, password: string) {
 
     this.firebaseAuth
       .auth
@@ -77,6 +97,7 @@ export class AuthService {
         alert('Wrong Email or Password');
         console.log('Something went wrong:', err.message);
       });
+
   }
 
   loginWithGoogle() {
@@ -94,7 +115,6 @@ export class AuthService {
       .catch((err) => {
         console.log(err);
       });
-
   }
 
   resetPassword(email: string) {
