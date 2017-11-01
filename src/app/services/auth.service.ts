@@ -33,45 +33,36 @@ export class AuthService {
     return re.test(email);
   }
 
-  getEmailByUsername(username: string, password: string) : string{
+  // get email using username
+  async getEmailByUsername(username: string, password: string) {
     console.log("calling getUsername: " + username);
-    var ref = firebase.database().ref("usernames/");
+    var ref = firebase.database().ref("usernames");
     let retEmail: string = "";
-    ref.once('value').then(function (snapshot) {
+    await ref.once("value").then(function (snapshot) {
       snapshot.forEach(function (userSnapshot) {
         var username2 = userSnapshot.val();
         if (username2.username === username) {
-          console.log("email: " + username2.email);
-          retEmail = username2.email;
-          console.log("retEmail: " + retEmail + " password: " + password);
+          retEmail = username2.email;       
         }
       })
-    }).then(value=>{
-        console.log("value2: " + value);
-        console.log("retEmail2: " + retEmail + " password: " + password);
-        return retEmail;
-      
-    });
+    })
     return retEmail;
   }
 
   isLoggedIn() {
-    if (this.userDetails == null) {
+    if (this.userDetails == null) 
       return false;
-    }
-    else {
-      return true;
-    }
+   
+    return true;
   }
 
-  loginWithEmail(email: string, password: string) {
-    console.log("before: " + email);
+  async loginWithEmail(email: string, password: string) {
+
+    // passing username to get the email information
     if (!this.isEmail(email)) {
-      email = this.getEmailByUsername(email, password);
-      console.log("after: " + email);
+      email = await this.getEmailByUsername(email, password);
     }
     
-    console.log("it should be here: " + email + " p: " + password);
     this.firebaseAuth
       .auth
       .signInWithEmailAndPassword(email, password)
@@ -118,7 +109,6 @@ export class AuthService {
   }
 
   resetPassword(email: string) {
-    console.log("service: " + email);
     this.firebaseAuth.auth.sendPasswordResetEmail(email)
       .then(() => {
         alert('email sent!');
