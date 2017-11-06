@@ -3,11 +3,11 @@ var Item = require('../models/itemModel');
 
 app.get('/items', function(req, res) {
 
-	Item.find({}, function(err, items) {
-		if(err) throw err;
+  Item.find({}, function(err, items) {
+    if(err) throw err;
 
-		res.send(items);
-	});
+    res.send(items);
+  });
 });
 
 app.get('/item', function(req, res) {
@@ -15,7 +15,7 @@ app.get('/item', function(req, res) {
 
 	Item.find({ _id: id }, function(err, item) {
 		if(err) throw err;
-		
+
 		res.send(item[0]);
 	});
 });
